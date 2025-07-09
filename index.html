@@ -1,215 +1,197 @@
 <!doctype html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Laboratorio de Programación Creativa</title>
-        <meta
-            name="description"
-            content="Laboratorio de Programación Creativa - Donde el código se convierte en herramienta para imaginar, experimentar y construir."
-        />
-        <meta name="author" content="Juan Manuel Daza" />
-        <meta
-            name="keywords"
-            content="programación creativa, creative coding, arduino, processing, p5.js, laboratorio, taller, programación, arte, tecnología"
-        />
-        <link
-            rel="icon"
-            href="https://data.daza.ar/favicon/page.png"
-            type="image/png"
-        />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css"
-        />
-        <!-- Font Awesome for icons -->
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap"
-            rel="stylesheet"
-        />
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script type="module">
+      import { initMdsite } from 'https://mdsite.daza.ar/mdsite.js';
 
-        <!-- Daza Navbar (remote) -->
-        <link rel="stylesheet" href="https://navbar.daza.ar/navbar.css" />
-        <script src="https://navbar.daza.ar/navbar.js"></script>
-        <style>
+      initMdsite({
+        title: 'Laboratorio de Programación Creativa',
+        description:
+          'Laboratorio de Programación Creativa - Donde el código se convierte en herramienta para imaginar, experimentar y construir.',
+        author: 'Juan Manuel Daza',
+        keywords:
+          'programación creativa, creative coding, arduino, processing, p5.js, laboratorio, taller, programación, arte, tecnología',
+
+        markdownUrl:
+          'https://data.daza.ar/md/laboratorio-de-programacion-creativa.md',
+        targetSelector: '#content',
+        removeContactSection: false,
+        errorMessage: 'Error loading Laboratorio de Programación Creativa',
+
+        showNavbar: true,
+        showPdfButton: true,
+        pdfFilename: 'laboratorio-programacion-creativa-2025.pdf',
+        pdfSelector: '.terminal-window',
+
+        contacts: [
+          {
+            href: 'mailto:juanmanueldaza@gmail.com',
+            icon: 'fa-solid fa-envelope',
+            label: 'Email',
+          },
+          {
+            href: 'https://www.linkedin.com/in/juanmanueldaza',
+            icon: 'fa-brands fa-linkedin',
+            label: 'LinkedIn',
+          },
+          {
+            href: 'https://github.com/juanmanueldaza',
+            icon: 'fa-brands fa-github',
+            label: 'GitHub',
+          },
+          {
+            href: 'https://gitlab.com/juanmanueldaza',
+            icon: 'fa-brands fa-gitlab',
+            label: 'GitLab',
+          },
+          {
+            href: 'https://daza.ar/',
+            icon: 'fa-solid fa-globe',
+            label: 'Website',
+          },
+        ],
+
+        customCSS: `
+          :root {
+            --creative-primary: #ff6b6b;
+            --creative-secondary: #4ecdc4;
+            --creative-accent: #45b7d1;
+            --creative-warning: #f9ca24;
+            --creative-success: #6c5ce7;
+          }
+
+          @media (prefers-color-scheme: dark) {
             :root {
-                --bg: #f6f8fa;
-                --fg: #23232e;
-                --window-bg: #fff;
-                --window-border: #e1e4e8;
-                --body-color: #23232e;
-                --heading: #23232e;
-                --link: #0366d6;
-                --link-hover: #0056b3;
-                --code-bg: #f6f8fa;
-                --blockquote: #6a737d;
-                --blockquote-border: #d1d5da;
-                --table-bg: #fff;
-                --table-border: #e1e4e8;
-                --button-bg: #f6f8fa;
-                --button-fg: #23232e;
-                --button-border: #e1e4e8;
-                --button-hover-bg: #e1e4e8;
-                --button-hover-fg: #23232e;
+              --creative-primary: #ff7675;
+              --creative-secondary: #00b894;
+              --creative-accent: #0984e3;
+              --creative-warning: #fdcb6e;
+              --creative-success: #6c5ce7;
             }
+          }
 
-            @media (prefers-color-scheme: dark) {
-                :root {
-                    --bg: #2c2c32;
-                    --fg: #e6e6e6;
-                    --window-bg: #23232e;
-                    --window-border: #222226;
-                    --body-color: #e6e6e6;
-                    --heading: #fff;
-                    --link: #8ab4f8;
-                    --link-hover: #fff;
-                    --code-bg: #181a1b;
-                    --blockquote: #b0b0b0;
-                    --blockquote-border: #444c56;
-                    --table-bg: #23232e;
-                    --table-border: #444c56;
-                    --button-bg: #23232e;
-                    --button-fg: #e6e6e6;
-                    --button-border: #444c56;
-                    --button-hover-bg: #444c56;
-                    --button-hover-fg: #fff;
-                }
-            }
+          .terminal-window {
+            max-width: 900px;
+            border: 2px solid var(--creative-accent);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 0 0 1px var(--creative-accent);
+          }
 
-            body {
-                background: var(--bg);
-                color: var(--body-color);
-                font-family: "Fira Mono", "Consolas", "Menlo", monospace;
-                margin: 0;
-                min-height: 100vh;
-            }
+          .markdown-body h1 {
+            border-bottom: 3px solid var(--creative-primary);
+            padding-bottom: 10px;
+            background: linear-gradient(45deg, var(--creative-primary), var(--creative-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          }
 
-            .terminal-window {
-                max-width: 900px;
-                margin: 48px auto;
-                border-radius: 8px;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-                overflow: hidden;
-                background: var(--window-bg);
-                border: 1.5px solid var(--window-border);
-            }
+          .markdown-body h2 {
+            position: relative;
+            padding-left: 25px;
+            color: var(--creative-accent);
+          }
 
-            .terminal-body {
-                background: var(--window-bg);
-                color: var(--body-color);
-                font-family: "Fira Mono", "Consolas", "Menlo", monospace;
-                padding: 32px 32px 40px 32px;
-                min-height: 400px;
-                border-radius: 0 0 8px 8px;
-            }
+          .markdown-body h2::before {
+            content: "🔬";
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.2em;
+          }
 
-            .markdown-body {
-                background: none;
-                color: var(--body-color);
-                box-shadow: none;
-                border-radius: 0;
-            }
+          .markdown-body h3 {
+            color: var(--creative-secondary);
+            position: relative;
+            padding-left: 25px;
+          }
 
-            .markdown-body h1,
-            .markdown-body h2,
-            .markdown-body h3,
-            .markdown-body h4,
-            .markdown-body h5,
-            .markdown-body h6 {
-                color: var(--heading);
-                font-weight: 700;
-            }
+          .markdown-body h3::before {
+            content: "⚡";
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.1em;
+          }
 
-            .markdown-body a {
-                color: var(--link);
-            }
+          .markdown-body blockquote {
+            background: linear-gradient(135deg, var(--code-bg), var(--code-bg));
+            border-left: 4px solid var(--creative-primary);
+            padding: 1.5em;
+            margin: 1.5em 0;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+          }
 
-            .markdown-body a:hover {
-                color: var(--link-hover);
-            }
+          .markdown-body blockquote::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--creative-primary), var(--creative-secondary), var(--creative-accent));
+          }
 
-            .markdown-body code,
-            .markdown-body pre {
-                background: var(--code-bg);
-                color: var(--body-color);
-                border-radius: 4px;
-            }
+          .markdown-body code {
+            background: var(--code-bg);
+            color: var(--creative-accent);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-weight: 600;
+          }
 
-            .markdown-body blockquote {
-                color: var(--blockquote);
-                border-left: 0.25em solid var(--blockquote-border);
-            }
+          .markdown-body pre {
+            background: var(--code-bg);
+            border: 1px solid var(--creative-accent);
+            border-radius: 8px;
+            padding: 1em;
+            overflow-x: auto;
+          }
 
-            .markdown-body table {
-                background: var(--table-bg);
-            }
+          .markdown-body pre code {
+            background: none;
+            color: var(--body-color);
+            font-weight: normal;
+          }
 
-            .markdown-body th,
-            .markdown-body td {
-                border-color: var(--table-border);
-            }
+          .markdown-body ul li::marker {
+            color: var(--creative-secondary);
+          }
 
-            /* Custom styles for the laboratory */
-            .markdown-body h1 {
-                border-bottom: 3px solid var(--link);
-                padding-bottom: 10px;
-            }
+          .markdown-body ol li::marker {
+            color: var(--creative-primary);
+            font-weight: bold;
+          }
 
-            .markdown-body .emoji {
-                font-size: 1.2em;
-                margin-right: 0.5em;
-            }
+          .markdown-body table {
+            border: 2px solid var(--creative-accent);
+            border-radius: 8px;
+            overflow: hidden;
+          }
 
-            .markdown-body blockquote {
-                font-style: italic;
-                background: var(--code-bg);
-                padding: 1em;
-                border-radius: 4px;
-                margin: 1.5em 0;
-            }
-        </style>
-        <!-- Add jsPDF and html2canvas -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    </head>
+          .markdown-body th {
+            background: linear-gradient(135deg, var(--creative-primary), var(--creative-secondary));
+            color: white;
+            font-weight: bold;
+          }
 
-    <body>
-        <div id="navbar-container"></div>
-        <div class="terminal-window">
-            <article id="laboratory" class="markdown-body terminal-body"></article>
-        </div>
-        <script type="module">
-            import { fetchAndRenderMarkdown, DownloadPdfUtil } from "https://mdsite.daza.ar/mdsite.js";
+          .markdown-body a {
+            color: var(--creative-accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+          }
 
-            async function downloadPdf() {
-                await DownloadPdfUtil.download({
-                    selector: ".terminal-window",
-                    filename: "laboratorio-programacion-creativa-2025.pdf",
-                });
-            }
-
-            window.initDazaNavbar({
-                showPdfButton: true,
-                pdfCallback: downloadPdf,
-                contacts: [
-                    { href: "mailto:juanmanueldaza@gmail.com", icon: "fa-solid fa-envelope", label: "Email" },
-                    { href: "https://www.linkedin.com/in/juanmanueldaza", icon: "fa-brands fa-linkedin", label: "LinkedIn" },
-                    { href: "https://github.com/juanmanueldaza", icon: "fa-brands fa-github", label: "GitHub" },
-                    { href: "https://gitlab.com/juanmanueldaza", icon: "fa-brands fa-gitlab", label: "GitLab" },
-                    { href: "https://daza.ar/", icon: "fa-solid fa-globe", label: "Website" }
-                ]
-            });
-
-            fetchAndRenderMarkdown({
-                url: "https://data.daza.ar/md/laboratorio-de-programacion-creativa.md",
-                targetSelector: "#laboratory",
-                removeContactSection: false,
-                errorMessage: "Error loading Laboratorio de Programación Creativa"
-            });
-        </script>
-    </body>
+          .markdown-body a:hover {
+            color: var(--creative-primary);
+            border-bottom-color: var(--creative-primary);
+          }
+        `,
+      });
+    </script>
+  </body>
 </html>
